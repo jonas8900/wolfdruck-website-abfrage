@@ -28,12 +28,12 @@ export default function Navbar() {
             >
               Website Informationen
             </Link>
-            <Link
+            {/* <Link
               href="/calculator"
               className="hover:text-white hover:underline underline-offset-4 transition duration-200"
             >
               Kalkulator
-            </Link>
+            </Link> */}
           </div>
 
           {/* Burger Icon */}
@@ -60,7 +60,7 @@ export default function Navbar() {
       >
         <div className="px-4 pb-4 pt-2 space-y-2 text-lg">
           <Link href="/" className="block hover:text-gray-100">Website Informationen</Link>
-          <Link href="/calculator" className="block hover:text-gray-100">Kalkulator</Link>
+          {/* <Link href="/calculator" className="block hover:text-gray-100">Kalkulator</Link> */}
         </div>
       </div>
     </nav>
