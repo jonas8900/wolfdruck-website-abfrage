@@ -18,6 +18,7 @@ export default function Navbar() {
             alt="Logo"
             width={40}
             height={40}
+            unoptimized
             className="h-10 w-auto mr-2 hover:scale-105 transition-transform duration-200"/>
 
           {/* Desktop Links */}

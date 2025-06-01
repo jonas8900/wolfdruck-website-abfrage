@@ -381,6 +381,7 @@ export default function WebsiteForm() {
               alt="Website Vorschau"
               width={800}
               height={450}
+              unoptimized
               className="w-full h-auto rounded"
             />
           </div>
