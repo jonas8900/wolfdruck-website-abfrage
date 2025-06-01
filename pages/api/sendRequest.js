@@ -4,7 +4,7 @@ import { limiter } from "@/lib/rate-limit";
 
 export default async function handler(req, res) {
   try {
-    await limiter.check(res, 5, 'REQUEST_WEBSITE_LIMIT');
+    // await limiter.check(res, 5, 'REQUEST_WEBSITE_LIMIT');
 
     if (req.method !== "POST") {
       return res.status(405).json({ message: `Methode ${req.method} nicht erlaubt` });
