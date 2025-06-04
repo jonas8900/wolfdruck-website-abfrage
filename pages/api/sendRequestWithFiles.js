@@ -18,7 +18,7 @@ const s3 = new S3({
 
 const parseForm = (req) =>
   new Promise((resolve, reject) => {
-    const form = formidable({ multiples: true });
+    const form = formidable({ multiples: true, maxFileSize: 10 * 1024 * 1024 }); 
     form.parse(req, (err, fields, files) => {
       if (err) return reject(err);
       resolve({ fields, files });

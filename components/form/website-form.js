@@ -57,6 +57,17 @@ export default function WebsiteForm() {
   async function handleFileChange(e) {
     const files = Array.from(e.target.files);
 
+    if(files) {
+      if(files.size > 10 * 1024 * 1024) {
+        setToastMessage({
+          type: 'error',
+          message: 'Die Datei ist zu groß. Maximal 10 MB erlaubt.',
+          timestamp: Date.now(),
+        });
+        return;
+      }
+    }
+
     if (files.length + imagePreview.length > 10) {
       setToastMessage({
         type: 'error',
@@ -146,6 +157,7 @@ export default function WebsiteForm() {
       "extras",
       "customFont",
       "colorPrimary",
+      'shortdescription',
       "colorSecondary",
       "font",
       "styleWebsite",
@@ -177,10 +189,11 @@ export default function WebsiteForm() {
         if (response.ok) {
           setToastMessage({
             type: "success",
-            message: "Anfrage erfolgreich gesendet!",
+            message: "Anfrage erfolgreich gesendet! Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
             timestamp: Date.now(),
           });
           form.reset();
+          setImagePreview([]);
           setSelectedPages([]);
         } else {
           throw new Error(result.error || "Unbekannter Fehler");
@@ -237,6 +250,9 @@ export default function WebsiteForm() {
       <h1 className="text-2xl font-semibold">Website-Informationen</h1>
       <h2 className="text-sm text-gray-400 mb-6">
         Alle Eingaben mit * sind Pflichtfelder
+      </h2>
+      <h2 className="text-sm text-gray-400 mb-6 font-semibold">
+        Bitte denken Sie daran: Unvollständig ausgefüllte Angaben bedeuten für uns mehr Aufwand – und können zu einer entsprechenden Preisanpassung führen.
       </h2>
       <form className="space-y-6" onSubmit={handleSubmit}>
         <h3 className="text-xl font-semibold mb-6 mt-12">
@@ -312,6 +328,19 @@ export default function WebsiteForm() {
               className="w-full border border-gray-300 rounded px-4 py-2"
             />
           </div>
+        </div>
+        <div>
+          <label className="block font-medium mb-1" htmlFor="shortdescription">
+            Kurze Beschreibung der Firmentätigkeit*
+          </label>
+          <textarea
+            id="shortdescription"
+            name="shortdescription"
+            maxLength={500}
+            required
+            className="w-full border border-gray-300 rounded px-4 py-2"
+            rows="3"
+          ></textarea>
         </div>
 
         <h3 className="text-xl font-semibold mb-6 mt-12">
