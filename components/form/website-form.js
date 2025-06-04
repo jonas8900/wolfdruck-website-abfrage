@@ -336,7 +336,7 @@ export default function WebsiteForm() {
           <textarea
             id="shortdescription"
             name="shortdescription"
-            maxLength={500}
+            maxLength={1000}
             required
             className="w-full border border-gray-300 rounded px-4 py-2"
             rows="3"

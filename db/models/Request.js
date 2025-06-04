@@ -17,6 +17,7 @@ const requestSchema = new Schema({
   postcode: { type: String, required: true, match: /^[0-9]{5}$/ },
   city: { type: String, required: true },
   email: { type: String, required: true, match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
+  shortdescription: { type: String, required: true, maxlength: 1000 },
   colorPrimary: { type: String, required: true },
   colorSecondary: { type: String },
   font: { type: String },
