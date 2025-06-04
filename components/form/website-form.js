@@ -9,7 +9,7 @@ import imageCompression from 'browser-image-compression';
 export default function WebsiteForm() {
   const [customFont, setCustomFont] = useState(false);
   const [font, setFont] = useState("Arial");
-  const [preview, setPreview] = useState("modern");
+  const [preview, setPreview] = useState("Modern");
   const [selectedPages, setSelectedPages] = useState([]);
   const [toastMessage, setToastMessage] = useState(null);
   const [imagePreview, setImagePreview] = useState([]);
