@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import LoginScreen from "../../components/Login/Loginscreen";
 import { signIn } from "next-auth/react";
 import ToastMessage from "@/components/toast/toastmessage";
+import LoginScreen from "@/components/login/Loginscreen";
 
 export default function Login() {
     const [toastMessage, setToastMessage] = useState(null);
