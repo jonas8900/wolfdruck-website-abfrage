@@ -162,6 +162,7 @@ export default function WebsiteForm() {
       "font",
       "styleWebsite",
       "startingPages",
+      "contactperson",
     ].forEach((key) => {
       data[key] = escapeHTML(data[key] || "");
     });
@@ -258,6 +259,19 @@ export default function WebsiteForm() {
         <h3 className="text-xl font-semibold mb-6 mt-12">
           Allgemeine Informationen
         </h3>
+         <div>
+          <label className="block font-medium mb-1" name="contactperson">
+            Ihr vollständiger Name*
+          </label>
+          <input
+            id="contactperson"
+            name="contactperson"
+            type="text"
+            maxLength={250}
+            className="w-full border border-gray-300 rounded px-4 py-2"
+            required
+          />
+        </div>
         <div>
           <label className="block font-medium mb-1" name="company">
             Name der Firma*

@@ -13,6 +13,7 @@ const requestSchema = new Schema({
       message: "Maximal 20 Bilder erlaubt.",
     },
   },
+  contactPerson: { type: String, required: true },
   orderid: { type: String, required: true, unique: true },
   address: { type: String, required: true },
   postcode: { type: String, required: true, match: /^[0-9]{5}$/ },
