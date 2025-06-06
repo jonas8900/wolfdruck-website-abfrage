@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { IoIosEye } from "react-icons/io";
-import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import ToastMessage from "../toast/toastmessage";
 
@@ -12,49 +11,49 @@ export default function LoginScreen({ handleSubmit }) {
   const overlayRegisteredRef = useRef(null);
   const router = useRouter();
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleClickOutside);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
 
-  async function handleSubmitRegistration(event) {
-    event.preventDefault();
+  // async function handleSubmitRegistration(event) {
+  //   event.preventDefault();
 
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
+  //   const formData = new FormData(event.target);
+  //   const data = Object.fromEntries(formData);
 
-    const response = await fetch(`/api/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+  //   const response = await fetch(`/api/register`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(data),
+  //   });
 
-    if (!response.ok) {
-      setShowError(true);
-      setToastMessage("Etwas ist schiefgelaufen!");
-      setTimeout(() => {
-        setShowError(false);
-        setToastMessage("");
-      }, 5000);
-      return;
-    }
+  //   if (!response.ok) {
+  //     setShowError(true);
+  //     setToastMessage("Etwas ist schiefgelaufen!");
+  //     setTimeout(() => {
+  //       setShowError(false);
+  //       setToastMessage("");
+  //     }, 5000);
+  //     return;
+  //   }
 
-    if (response.ok) {
-      setShowSuccess(true);
-      setToastMessage("Erfolgreich Registriert! 🎉");
-      setTimeout(() => {
-        setShowSuccess(false);
-        setToastMessage("");
-        setRegistered(false);
-        router.push("/auth/login");
-      }, 5000);
-    } else {
-      alert("Etwas ist schiefgelaufen, versuche es später noch einmal.");
-    }
-  }
+  //   if (response.ok) {
+  //     setShowSuccess(true);
+  //     setToastMessage("Erfolgreich Registriert! 🎉");
+  //     setTimeout(() => {
+  //       setShowSuccess(false);
+  //       setToastMessage("");
+  //       setRegistered(false);
+  //       router.push("/auth/login");
+  //     }, 5000);
+  //   } else {
+  //     alert("Etwas ist schiefgelaufen, versuche es später noch einmal.");
+  //   }
+  // }
 
   function handlePasswortTypeHidden() {
     setTypeSwitch("text");
@@ -65,56 +64,56 @@ export default function LoginScreen({ handleSubmit }) {
   }
 
 
-  function handleClickOutside(e) {
-    if (overlayRef.current && !overlayRef.current.contains(e.target)) {
-      setForgotPassword(false);
-    }
-    if (
-      overlayRegisteredRef.current &&
-      !overlayRegisteredRef.current.contains(e.target)
-    ) {
-      setRegistered(false);
-    }
-  }
+  // function handleClickOutside(e) {
+  //   if (overlayRef.current && !overlayRef.current.contains(e.target)) {
+  //     setForgotPassword(false);
+  //   }
+  //   if (
+  //     overlayRegisteredRef.current &&
+  //     !overlayRegisteredRef.current.contains(e.target)
+  //   ) {
+  //     setRegistered(false);
+  //   }
+  // }
 
 
-    async function handleSubmitForgotPassword(event) {
-      event.preventDefault();
+  //   async function handleSubmitForgotPassword(event) {
+  //     event.preventDefault();
 
-      const formData = new FormData(event.target);
-      const email = formData.get("email");
+  //     const formData = new FormData(event.target);
+  //     const email = formData.get("email");
 
-      try {
-        const response = await fetch("/api/admin/forgot-password", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        });
+  //     try {
+  //       const response = await fetch("/api/admin/forgot-password", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ email }),
+  //       });
 
-        if (response.ok) {
-            setToastMessage({
-                type: 'success',
-                message: "Email zum Zurücksetzen des Passworts wurde gesendet!",
-                timestamp: Date.now(),
-            });
-            return
-        } else {
-            setToastMessage({
-                type: 'error',
-                message: response.error,
-                timestamp: Date.now(),
-                });
-        }
-      } catch (error) {
-         setToastMessage({
-                type: 'error',
-                message: error,
-                timestamp: Date.now(),
-          });
-    };
-  }
+  //       if (response.ok) {
+  //           setToastMessage({
+  //               type: 'success',
+  //               message: "Email zum Zurücksetzen des Passworts wurde gesendet!",
+  //               timestamp: Date.now(),
+  //           });
+  //           return
+  //       } else {
+  //           setToastMessage({
+  //               type: 'error',
+  //               message: response.error,
+  //               timestamp: Date.now(),
+  //               });
+  //       }
+  //     } catch (error) {
+  //        setToastMessage({
+  //               type: 'error',
+  //               message: error,
+  //               timestamp: Date.now(),
+  //         });
+  //   };
+  // }
 
 
 
@@ -194,12 +193,12 @@ export default function LoginScreen({ handleSubmit }) {
                     id="password">
                     Password
                   </label>
-                  <a
+                  {/* <a
                     href="#"
                     class="cursor-pointer text-xs text-purple-500 hover:text-gray-600 transition-all duration-200 dark:hover:text-white"
                     onClick={() => setForgotPassword(true)}>
                     Forget Password?
-                  </a>
+                  </a> */}
                 </div>
                 <span class="relative flex items-center">
                   <IoIosEye
@@ -226,12 +225,12 @@ export default function LoginScreen({ handleSubmit }) {
             </form>
             <div class="mt-4 flex items-center justify-between">
               <span class="border-b w-1/5 md:w-1/4"></span>
-              <a
+              {/* <a
                 href="#"
                 class="cursor-pointer text-xs text-purple-500 uppercase hover:text-gray-600 transition-all duration-200 dark:hover:text-white"
                 onClick={() => setRegistered(true)}>
                 or sign up
-              </a>
+              </a> */}
               <span class="border-b w-1/5 md:w-1/4"></span>
             </div>
           </div>
