@@ -13,6 +13,7 @@ const requestSchema = new Schema({
       message: "Maximal 20 Bilder erlaubt.",
     },
   },
+  orderid: { type: String, required: true, unique: true },
   address: { type: String, required: true },
   postcode: { type: String, required: true, match: /^[0-9]{5}$/ },
   city: { type: String, required: true },
@@ -40,8 +41,27 @@ const requestSchema = new Schema({
     default: {},
   },
   extras: { type: String },
+  status: {
+    type: String,
+    enum: ["pending", "in_progress", "completed", "rejected"],
+    default: "pending",
+  },
   createdAt: { type: Date, default: Date.now },
 });
+
+
+requestSchema.pre("validate", async function (next) {
+  if (!this.orderid) {
+    this.orderid = `ORD-${Date.now()}`;
+  }
+
+  if (this.pagenames && Array.isArray(this.pagenames)) {
+    this.pagenames = [...new Set(this.pagenames)];
+  }
+
+  next();
+})
+
 
 const Request =
   mongoose.models.Request || mongoose.model("Request", requestSchema);

@@ -12,13 +12,13 @@ function App({ Component, pageProps }) {
 
 
     return (
-        // <SessionProvider session={pageProps.session}>
+        <SessionProvider session={pageProps.session}>
             <SWRConfig value={{ fetcher }}>
                 <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
                         <Component {...pageProps} />
                 </ThemeProvider>
             </SWRConfig>
-        // </SessionProvider> 
+        </SessionProvider> 
     );
 }
 
