@@ -130,7 +130,7 @@ export default function LoginScreen({ handleSubmit }) {
         <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto w-full max-w-4xl dark:border-gray-700 dark:bg-gray-800">
           <div
             className="hidden lg:block lg:w-1/2 bg-contain bg-center"
-            style={{ backgroundImage: "url(/logo.png)" }}></div>
+            style={{ backgroundImage: "url(/Logo.png)" }}></div>
           <div className="w-full p-8 lg:w-1/2">
             <h2 className="text-2xl font-semibold text-gray-700 text-center dark:text-white">
               Wolfdruck Login
