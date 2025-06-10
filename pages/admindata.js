@@ -1,11 +1,13 @@
 import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/solid";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import useSWR from "swr";
 
 export default function AdminData() {
     const { data: session, status } = useSession();
     const {data: orders, error, isLoading} = useSWR('/api/requests')
+    const router = useRouter();
 
     const dummyOrders = [
         {
@@ -46,6 +48,10 @@ export default function AdminData() {
 
     function handleSignOut() {
         signOut({ callbackUrl: '/auth/login' });
+    }
+    
+    function handleGetOrder(orderId) {
+        router.push(`/orders/${orderId}`);
     }
 
     if (!session) {
@@ -98,6 +104,7 @@ export default function AdminData() {
                             return (
                                 <li
                                     key={order._id}
+                                    onClick={() => handleGetOrder(order._id)}
                                     className="border-b px-6 py-4 hover:bg-gray-50 transition cursor-pointer"
                                 >
                                     <div className="flex justify-between items-center">
