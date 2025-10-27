@@ -135,6 +135,7 @@ export default function WebsiteForm() {
         message: "Bitte wähle mindestens eine Seite aus.",
         timestamp: Date.now(),
       });
+      setIsSubmitting(false);
       return;
     }
 

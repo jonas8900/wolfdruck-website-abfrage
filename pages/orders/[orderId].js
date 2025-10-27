@@ -43,7 +43,7 @@ export default function OrderDetails() {
                 <h2 className="text-xl font-semibold mb-4">Kundendaten</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base">
                     <p><span className="font-medium font-semibold">Firma:</span> {data.company}</p>
-                    <p><span className="font-medium font-semibold">Ansprechpartner:</span> {data.contactperson}</p>
+                    <p><span className="font-medium font-semibold">Name der Person:</span> {data.contactperson}</p>
                     <p><span className="font-medium font-semibold">E-Mail:</span> {data.email}</p>
                     <p><span className="font-medium font-semibold">Status:</span> {data.status}</p>
                     <p><span className="font-medium font-semibold">Erstellt am:</span> {new Date(data.createdAt).toLocaleDateString()}</p>
