@@ -34,6 +34,7 @@ export default function WebsiteForm() {
     setPreview(e.target.value);
   }
 
+  console.log("1");
   
   async function handleImageUploadConverter(file) {
     const options = {
