@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const session = await getServerSession(req, res, authOptions); 
 
     if (!session) {
-        return response.status(403).json({ message: "No access" });
+        return res.status(403).json({ message: "No access" });
     }
 
     await dbConnect();
